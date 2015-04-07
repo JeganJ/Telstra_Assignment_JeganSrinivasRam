@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 namespace Question1FixTheBugs
 {
     #region Question 1
@@ -16,7 +14,7 @@ namespace Question1FixTheBugs
     {
         public static double Average(int a, int b)
         {
-            return ((double)a + b )/ 2;
+            return (double)(a + b )/ 2;
         }
     }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Question3IndexOfLongSequence
 {
@@ -12,72 +12,40 @@ namespace Question3IndexOfLongSequence
     {
         public static String IndexOfLongestRun(this String str)
         {
-            Dictionary<char, int> charIndex = new Dictionary<char, int>();
-            Dictionary<char, int> longestRun = new Dictionary<char, int>();
-
-            char oldChar = str[0];
-            int newCount = 0;
-            int totalCount = 0;
-            int newIndex = 0;
-            int highestCount = 0;
-            String chars = "";
-
-            charIndex[oldChar] = 0;
-
-            //needed for the below logic to work ( for last letter iteration )
-            str = str + "$";
-
-            foreach (char c in str)
-            {
-
-                //if subsequent characters are different
-                if (oldChar != c)
-                {
-                    //initialise index with zero or with existing index
-                    charIndex[c] = charIndex.ContainsKey(c) ? charIndex[c] : 0;
-
-                    if (longestRun.ContainsKey(oldChar))
-                    {
-                        //compare old and new sequence length
-                        if (longestRun[oldChar] < newCount)
-                        {
-                            longestRun[oldChar] = newCount;
-                            charIndex[oldChar] = newIndex;
-                        }
-                    }
-                    else
-                    {
-                        longestRun[oldChar] = newCount;
-                        charIndex[oldChar] = newIndex;
-                    }
-
-                    if (highestCount <= newCount)
-                    {
-                        highestCount = newCount;
-                        if (chars.IndexOf(oldChar) < 0)
-                            chars += oldChar;
-                    }
-
-                    oldChar = c;
-                    newCount = 0;
-                    newIndex = totalCount;
-                }
-                newCount++;
-                totalCount++;
-            }
-
-            foreach (char item in chars.ToCharArray())
-            {
-                if (longestRun[item] != highestCount)
-                    chars = chars.Replace("" + item, "");
-            }
-
             String result = "";
-            foreach (char item in chars.ToCharArray())
+            int highestLength = 0;
+            Dictionary<char, int> longSequence = new Dictionary<char, int>();
+
+            List<char> eachChar = (from s in str.ToCharArray() select s).Distinct().ToList<char>();
+
+            MatchCollection collection = null;
+            Console.WriteLine();
+            foreach (char c in eachChar)
             {
-                result += "Letter : " + item + " , Count : " + longestRun[item] + " , Index : " + charIndex[item] + "\n\n";
+                collection = Regex.Matches(str, c + "*", RegexOptions.Singleline | RegexOptions.IgnorePatternWhitespace);
+
+                foreach (Match coll in collection)
+                {
+                    if (!String.IsNullOrEmpty(coll.Value))
+                    {
+                        if (coll.Length > highestLength)
+                        {
+                            highestLength = coll.Length;
+                            longSequence.Clear();
+                            longSequence.Add(coll.Value[0], coll.Index);
+                        }
+                        else if (coll.Length == highestLength)
+                            longSequence.Add(coll.Value[0], coll.Index);
+                    }
+                }
             }
 
+            result += "The Result is : \n";
+
+            foreach (KeyValuePair<char, int> pair in longSequence)
+                result += "\tThe Letter : " + pair.Key + " , The Index : " + pair.Value +"\n";
+
+            result += "\n\n";
             return result;
         }
     }
@@ -86,7 +54,6 @@ namespace Question3IndexOfLongSequence
     {
         public static void IndexOfLongestRun(string str)
         {
-            Console.WriteLine("\nThe input is : " + str + "\n");
             Console.WriteLine(str.IndexOfLongestRun());
         }
         public static void Main(string[] args)

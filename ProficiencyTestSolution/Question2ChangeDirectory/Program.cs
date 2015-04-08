@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 namespace Question2ChangeDirectory
 {
     #region Question 2
-
     public class Path
     {
         public string CurrentPath { get; private set; }

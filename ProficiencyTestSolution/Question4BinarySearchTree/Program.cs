@@ -136,7 +136,7 @@ namespace Question4BinarySearchTree
                     checkRightSide(node.Left);
             }
         }
-        
+
         public static void Main(string[] args)
         {
             #region test sets

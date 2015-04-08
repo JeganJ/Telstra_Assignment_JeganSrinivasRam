@@ -38,7 +38,7 @@ namespace Question3IndexOfLongSequence
                         }
                         else if (coll.Length == highestLength)
                         {
-                            if( longSequence.ContainsKey(coll.Value[0]) == false)
+                            if (longSequence.ContainsKey(coll.Value[0]) == false)
                                 longSequence.Add(coll.Value[0], coll.Index);
                         }
                     }

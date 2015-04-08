@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D7EDA82B-96A0-4789-88B6-8EFD64119106}</ProjectGuid>
+    <ProjectGuid>{13DF7DB0-9AF1-4925-873E-684AED8F6B5C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Question4BinarySearchTree</RootNamespace>
@@ -42,14 +42,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="TestSets\10_1_20.png" />
-    <Content Include="TestSets\BinarySearchTree.gif" />
-    <Content Include="TestSets\binary_search_tree.png" />
-    <Content Include="TestSets\bst.gif" />
-    <Content Include="TestSets\height_balanced_tree.png" />
-    <Content Include="TestSets\hqdefault.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

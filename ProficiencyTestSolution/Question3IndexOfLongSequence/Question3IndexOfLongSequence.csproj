@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D89203D-4D6C-4A73-9052-6F210622265D}</ProjectGuid>
+    <ProjectGuid>{5E4F1DDC-5631-447D-A9C2-976B44B884D6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Question3IndexOfLongSequence</RootNamespace>
